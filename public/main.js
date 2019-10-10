@@ -1,3 +1,6 @@
+// shorthand for document.querySelector
+// this isn't working....vscode is deleting parentheses
+const qs = (element) => document.querySelector(element);
 let teamOneScore = 0;
 let teamTwoScore = 0;
 
@@ -42,7 +45,22 @@ const scoreReachesTen = () => {
 	teamOneScoreText.style.color = 'red';
 };
 
+// name of team 1 will update when update button is pressed
+const updateTeamOneName = () => {
+	const teamOneName = document.querySelector('input.team-1-input').value;
+	document.querySelector('.team-1-name').textContent = teamOneName;
+	document.querySelector('input.team-1-input').value = '';
+};
+
+// name of team 2 will update when update button is pressed
+const updateTeamTwoName = () => {
+	const teamTwoName = document.querySelector('input.team-2-input').value;
+	document.querySelector('.team-2-name').textContent = teamTwoName;
+	document.querySelector('input.team-2-input').value = '';
+};
+
 const main = () => {
+	console.log(qs('.team-2-input'));
 	document
 		.querySelector('button.team-1-add-1-button')
 		.addEventListener('click', teamOneAddOne);
@@ -55,6 +73,12 @@ const main = () => {
 	document
 		.querySelector('button.team-2-subtract-1-button')
 		.addEventListener('click', teamTwoSubtractOne);
+	document
+		.querySelector('button.update-team-1-name')
+		.addEventListener('click', updateTeamOneName);
+	document
+		.querySelector('button.update-team-2-name')
+		.addEventListener('click', updateTeamTwoName);
 };
 
 document.addEventListener('DOMContentLoaded', main);
